@@ -24,6 +24,9 @@ class grape_theme{
 	var $users_online = 0;
 	public $module_statistics = false;
 	
+	/**
+	 *
+	 */
 	function __construct(){
 		new stdClass();
 		$this->content = new stdClass();
@@ -47,7 +50,7 @@ class grape_theme{
 		}
 	}
 	/**
-	 *
+	 * @description Echoes output as JSON / Communication
 	 */
 	public function ajax_out(){
 		$json_result = new stdClass();
@@ -66,12 +69,13 @@ class grape_theme{
 		echo json_encode($json_result, JSON_PRETTY_PRINT);
 	}
 	/**
-	 *
+	 * @description Main template
 	 */
 	public function html_out(){
 		include_once("template.php");
 	}
 	/**
+	 * @description Loads a JS file incl. init function
 	 * @param string $item
 	 * @param string $function
 	 */
@@ -83,27 +87,30 @@ class grape_theme{
 		array_push($this->scripts,$script);
 	}
 	/**
-	 *
+	 * @description Loads CSS file
 	 */
 	public function add_css($item){
 		array_push($this->stylesheets,$item);
 	}
 	/**
+	 * @description Adds item to menue
 	 * @param object $item
 	 */
 	public function add_menu_item($item){
 		array_push($this->menuitems,$item);
 	}
 	/**
-	 * Wrapper for add_menu_item
+	 * @description Adds multiple menue items / Wrapper for add_menu_item
 	 * @param array $items
 	 */
 	public function add_menu_items($items){
-		foreach($items as $item)
+		foreach($items as $item){
 			array_push($this->menuitems,$item);
+		}
 	}
 	/**
-	 *
+	 * @description Adds campaign button(s)
+	 * @param array or object
 	 */
 	public function add_campaign_button($items){
 		if(!is_array($items)) {
@@ -114,7 +121,7 @@ class grape_theme{
 		}
 	}
 	/**
-	 *
+	 * @description Builds campaign buttons
 	 */
 	public function build_campaign_buttons(){
 		$result = "";
@@ -150,7 +157,7 @@ class grape_theme{
 		return '<div class="row">'.$result.'</div>';
 	}
 	/**
-	 * Custom frontpage
+	 * @description Builds custom frontpage
 	 */
 	public function build_frontpage(){
 		global $grape;
@@ -170,7 +177,7 @@ class grape_theme{
 		$this->content->html.= $this->wrap_div($html);
 	}
 	/**
-	 * Card layout
+	 * @description Card layout
 	 * @param string $url
 	 * @param string $title
 	 * @param string $message
@@ -193,6 +200,7 @@ class grape_theme{
 		return $result;
 	}
 	/**
+	 * @description Div for content
 	 * @param string $stuff
 	 * @param string $background_right
 	 */
@@ -231,7 +239,7 @@ class grape_theme{
 		return $result;
 	}
 	/**
-	 * Formats a variable & wraps div
+	 * @description Formats a variable & wraps div
 	 * @param every $var
 	 * @result string HTML representation
 	 */
@@ -239,22 +247,12 @@ class grape_theme{
 		return $this->wrap_div($this->dump_var_simple($var));
 	}
 	/**
-	 * Formats a variable
+	 * @description Formats a variable
 	 * @param every $var
 	 * @result string HTML representation
 	 */
 	function dump_var_simple($var){
 		return "<code>".str_replace(array("\t","    "),"&nbsp;&nbsp;&nbsp;&nbsp;",nl2br(print_r($var,true)))."</code>";
-	}
-	/**
-	 * @deprecated
-	 */
-	function html_header(){
-	}
-	/**
-	 * @deprecated
-	 */
-	function html_footer(){
 	}
 }
 ?>
