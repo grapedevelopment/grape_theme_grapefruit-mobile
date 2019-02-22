@@ -199,6 +199,9 @@ div.box{
   -webkit-transform: rotate(270deg);
   font-size: 8px;
 }
+.popover{
+	z-index: 10000;
+}
 
 
 .info.leaflet-control, .switcher.leaflet-control{
