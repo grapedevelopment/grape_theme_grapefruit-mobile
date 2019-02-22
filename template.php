@@ -38,7 +38,7 @@
         </ul>
       </div>
     </nav>
-
+    <!--<button type="button" id="grape_help" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="left" title="Popover title" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.Vivamus sagittis lacus vel augue laoreet rutrum faucibus.Vivamus sagittis lacus vel augue laoreet rutrum faucibus.Vivamus sagittis lacus vel augue laoreet rutrum faucibus.Vivamus sagittis lacus vel augue laoreet rutrum faucibus.Vivamus sagittis lacus vel augue laoreet rutrum faucibus." style="position: absolute; right: -5px;top:60px;">?</button>-->
     <div id="grape_overlay" style="display: none;"><div id="map" style="width: 100%; position: absolute; left: 0px; top: 0px; bottom:0px;"></div></div>
     <div id="grape_overlay2" style="display: none;"><div id='map2' style='width: 100%; position: absolute; left: 0px; top: 0px; bottom:0px;'></div></div>
     <div id="loader_wrapper" class="bg-dark rounded" style="display: none;"><div class="loader"></div>Lade Daten...</div>
@@ -60,6 +60,7 @@
     <script src="<?php echo URL; ?>external-js-libraries/leaflet/leaflet.js"></script>
     <script src="<?php echo URL; ?>external-js-libraries/leaflet/L.Control.Locate.js"></script>
       <script>
+
 /**
  * Mobile Detection
  * @copyright: cc by sa 3.0 sweets-BlingBling / stackoverflow
@@ -198,7 +199,9 @@ function load_content(payload="",div='#grape_content'){
           $( '.navbar-brand' ).html(data.title.html);
           $( 'title' ).html('Content');
         }
-        var i = 0;
+        // Help
+        console.log("data.help.title: "+data.help.title);
+        console.log("data.help.html: "+data.help.html);
         // load additional styles
         for(i=0;i<data.styles.length;i++){
             if (document.createStyleSheet){
@@ -274,6 +277,8 @@ function load_content(payload="",div='#grape_content'){
         $('html, body').animate({
             scrollTop: $("body").offset().top
         }, 0);
+        $('#grape_help').popover('show');
+        $('#grape_help').popover('hide');
       });
      
     // Perform other work here ...
