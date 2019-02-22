@@ -38,7 +38,7 @@
         </ul>
       </div>
     </nav>
-    <!--<button type="button" id="grape_help" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="left" title="Popover title" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.Vivamus sagittis lacus vel augue laoreet rutrum faucibus.Vivamus sagittis lacus vel augue laoreet rutrum faucibus.Vivamus sagittis lacus vel augue laoreet rutrum faucibus.Vivamus sagittis lacus vel augue laoreet rutrum faucibus.Vivamus sagittis lacus vel augue laoreet rutrum faucibus." style="position: absolute; right: -5px;top:60px;">?</button>-->
+    <button type="button" id="grape_help" class="btn btn-danger" data-html="true" data-container="body" data-toggle="popover" data-placement="left" title="" data-content="" style="position: absolute; right: -5px;top:60px;display: none;">?</button>
     <div id="grape_overlay" style="display: none;"><div id="map" style="width: 100%; position: absolute; left: 0px; top: 0px; bottom:0px;"></div></div>
     <div id="grape_overlay2" style="display: none;"><div id='map2' style='width: 100%; position: absolute; left: 0px; top: 0px; bottom:0px;'></div></div>
     <div id="loader_wrapper" class="bg-dark rounded" style="display: none;"><div class="loader"></div>Lade Daten...</div>
@@ -200,8 +200,14 @@ function load_content(payload="",div='#grape_content'){
           $( 'title' ).html('Content');
         }
         // Help
-        console.log("data.help.title: "+data.help.title);
-        console.log("data.help.html: "+data.help.html);
+        if(data.help.html==="Wow! So much help!" || data.help.html===""){
+          $('#grape_help').hide();
+        }
+        else{
+          $('#grape_help').attr('data-content', data.help.html);
+          $('#grape_help').attr('title', data.help.title);
+          $('#grape_help').show();
+        }
         // load additional styles
         for(i=0;i<data.styles.length;i++){
             if (document.createStyleSheet){
