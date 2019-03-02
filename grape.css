@@ -107,6 +107,19 @@ input{
 .dropdown .btn{
 	white-space: nowrap;
 }
+.dropdown-menu.show{
+	z-index: 10000;
+}
+.btn-danger{
+	color: #fff;
+	background-color: #EE177C;
+	border-color: #EE177C;
+}
+.btn-danger:hover {
+	color: #fff;
+	background-color: #c4005a;
+	border-color: #c4005a;
+}
 .dropdown-menu{
 	z-index: 1031;
 }
