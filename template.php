@@ -17,7 +17,7 @@
     <link href="<?php echo URL."grape-themes/".$this->dir_name;?>3rd-party/font-awesome.min.css" rel="stylesheet"/>
     <link href="<?php echo URL."grape-themes/".$this->dir_name;?>3rd-party/leaflet.css" rel="stylesheet"/>
     <link href="<?php echo URL."grape-themes/".$this->dir_name;?>3rd-party/offcanvas.css" rel="stylesheet"/>
-    <link href="<?php echo URL."grape-themes/".$this->dir_name;?>grape.css?v=20" rel="stylesheet"/>
+    <link href="<?php echo URL."grape-themes/".$this->dir_name;?>grape.css?v=25" rel="stylesheet"/>
   </head>
 
   <body class="bg-light">
@@ -103,6 +103,7 @@ $(document).ready(function () {
 function load_content(payload="",div='#grape_content'){
   $("#loader_wrapper").show();
   last_payload = payload;
+  $('.popover').popover("hide");
   /*if(typeof(payload) == 'string'){
     payload = JSON.parse(payload);
   }
