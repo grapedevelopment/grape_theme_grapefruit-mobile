@@ -202,11 +202,15 @@ function load_content(payload="",div='#grape_content'){
         }
         // Help
         if(data.help.html==="Wow! So much help!" || data.help.html===""){
-          $('#grape_help').hide();
+          if ($('#grape_help').css('display') !== 'none'){
+            $('#grape_help').hide();
+          }
         }
         else{
           $('#grape_help').attr('data-content', data.help.html);
-          $('#grape_help').attr('title', data.help.title);
+          if(data.help.title != 'Help Title'){
+            $('#grape_help').attr('title', data.help.title);
+          }
           $('#grape_help').show();
         }
         // load additional styles
@@ -284,7 +288,9 @@ function load_content(payload="",div='#grape_content'){
         $('html, body').animate({
             scrollTop: $("body").offset().top
         }, 0);
-        $('#grape_help').popover('show');
+        if ($('#grape_help').css('display') !== 'none'){
+          $('#grape_help').popover('show');
+        }
         $('#grape_help').popover('hide');
       });
      
